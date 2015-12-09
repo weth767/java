@@ -27,10 +27,8 @@ public class Cadcliente extends JFrame {
 	private JTextField email;
 	private JTextField telefone;
 	private JTextField referencia;
-
-	/**
-	 * Launch the application.
-	 */
+	String array[] = new String[11];
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,9 +42,47 @@ public class Cadcliente extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	public void limpaNome()
+	{
+		nome.setText("");
+		cpf.setText("");
+		rg.setText("");
+		cep.setText("");
+		rua.setText("");
+		bairro.setText("");
+		complemento.setText("");
+		numero.setText("");
+		email.setText("");
+		telefone.setText("");
+		referencia.setText("");
+		
+		
+	}
+	public void cadastraClienteteste()
+	{
+		array[0] = nome.getText();
+		array[1] = cpf.getText();
+		array[2] = rg.getText();
+		array[3] = cep.getText();
+		array[4] = rua.getText();
+		array[5] = bairro.getText();
+		array[6] = numero.getText();
+		array[7] = referencia.getText();
+		array[8] = complemento.getText();
+		array[9] = email.getText();
+		array[10] = telefone.getText();
+		
+	}
+	public void teste()
+	{
+		for(int i=0; i<10;i++)
+		{
+			
+			System.out.println("\n" + array[i]);
+			
+		}
+		
+	}
 	public Cadcliente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 635, 594);
@@ -184,6 +220,8 @@ public class Cadcliente extends JFrame {
 		JButton btncadastrar = new JButton("Cadastrar");
 		btncadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cadastraClienteteste();
+				teste();
 			}
 		});
 		btncadastrar.setFont(new Font("Arial", Font.BOLD, 16));
@@ -193,17 +231,7 @@ public class Cadcliente extends JFrame {
 		JButton btnlimpar = new JButton("Limpar");
 		btnlimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				nome.setText("");
-				cpf.setText("");
-				rg.setText("");
-				cep.setText("");
-				rua.setText("");
-				bairro.setText("");
-				complemento.setText("");
-				numero.setText("");
-				email.setText("");
-				telefone.setText("");
-				referencia.setText("");
+				limpaNome();
 				
 			}
 		});
