@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -27,7 +29,8 @@ public class Cadcliente extends JFrame {
 	private JTextField email;
 	private JTextField telefone;
 	private JTextField referencia;
-	String array[] = new String[11];
+	String Nome,Rg,Cpf,Cep,Rua,Bairro,Complemento,Numero,Email,Telefone,Referencia;
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -59,28 +62,37 @@ public class Cadcliente extends JFrame {
 		
 	}
 	public void cadastraClienteteste()
-	{
-		array[0] = nome.getText();
-		array[1] = cpf.getText();
-		array[2] = rg.getText();
-		array[3] = cep.getText();
-		array[4] = rua.getText();
-		array[5] = bairro.getText();
-		array[6] = numero.getText();
-		array[7] = referencia.getText();
-		array[8] = complemento.getText();
-		array[9] = email.getText();
-		array[10] = telefone.getText();
-		
+	{	
+			
+			Nome = nome.getText();
+			Cpf = cpf.getText();
+			Rg = rg.getText();
+			Cep = cep.getText();
+			Rua = rua.getText();
+			Bairro = bairro.getText();
+			Complemento = complemento.getText();
+			Numero = numero.getText();
+			Email = email.getText();
+			Telefone = telefone.getText();
+			Referencia = referencia.getText();
+			
 	}
-	public void teste()
+	public void mostraCadastro()
 	{
-		for(int i=0; i<10;i++)
-		{
-			
-			System.out.println("\n" + array[i]);
-			
-		}
+		String msg = "Dados Cadastrados:";
+		msg = msg + "\n Nome: "+ Nome;
+		msg = msg + "\n CPF: "+ Cpf;
+		msg = msg + "\n RG: "+ Rg;
+		msg = msg + "\n CEP: "+ Cep;
+		msg = msg + "\n Rua: "+ Rua;
+		msg = msg + "\n Bairro: "+ Bairro;
+		msg = msg + "\n Complemento: "+ Complemento;
+		msg = msg + "\n Número: "+ Numero;
+		msg = msg + "\n Email: "+ Email;
+		msg = msg + "\n Telefone: "+ Telefone;
+		msg = msg + "\n Referência: "+ Referencia;
+		JOptionPane.showMessageDialog(null, msg);
+		
 		
 	}
 	public Cadcliente() {
@@ -148,7 +160,7 @@ public class Cadcliente extends JFrame {
 		
 		rg = new JTextField();
 		rg.setFont(new Font("Arial", Font.PLAIN, 12));
-		rg.setBounds(65, 162, 200, 29);
+		rg.setBounds(65, 162, 222, 29);
 		contentPane.add(rg);
 		rg.setColumns(10);
 		
@@ -161,13 +173,13 @@ public class Cadcliente extends JFrame {
 		nome = new JTextField();
 		nome.setFont(new Font("Arial", Font.PLAIN, 12));
 		nome.setColumns(10);
-		nome.setBounds(65, 60, 429, 29);
+		nome.setBounds(65, 60, 515, 29);
 		contentPane.add(nome);
 		
 		cep = new JTextField();
 		cep.setFont(new Font("Arial", Font.PLAIN, 12));
 		cep.setColumns(10);
-		cep.setBounds(65, 215, 200, 29);
+		cep.setBounds(65, 215, 222, 29);
 		contentPane.add(cep);
 		
 		rua = new JTextField();
@@ -185,19 +197,19 @@ public class Cadcliente extends JFrame {
 		complemento = new JTextField();
 		complemento.setFont(new Font("Arial", Font.PLAIN, 12));
 		complemento.setColumns(10);
-		complemento.setBounds(133, 330, 300, 29);
+		complemento.setBounds(133, 330, 371, 29);
 		contentPane.add(complemento);
 		
 		numero = new JTextField();
 		numero.setFont(new Font("Arial", Font.PLAIN, 12));
 		numero.setColumns(10);
-		numero.setBounds(460, 274, 86, 29);
+		numero.setBounds(460, 274, 101, 29);
 		contentPane.add(numero);
 		
 		email = new JTextField();
 		email.setFont(new Font("Arial", Font.PLAIN, 12));
 		email.setColumns(10);
-		email.setBounds(65, 387, 268, 29);
+		email.setBounds(65, 387, 281, 29);
 		contentPane.add(email);
 		
 		telefone = new JTextField();
@@ -214,14 +226,16 @@ public class Cadcliente extends JFrame {
 		
 		JLabel lblCadastroDeClientes = new JLabel("Cadastro de Clientes");
 		lblCadastroDeClientes.setFont(new Font("Arial", Font.BOLD, 27));
-		lblCadastroDeClientes.setBounds(133, 11, 286, 32);
+		lblCadastroDeClientes.setBounds(163, 11, 286, 32);
 		contentPane.add(lblCadastroDeClientes);
 		
 		JButton btncadastrar = new JButton("Cadastrar");
 		btncadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cadastraClienteteste();
-				teste();
+				mostraCadastro();
+				limpaNome();
+				
 			}
 		});
 		btncadastrar.setFont(new Font("Arial", Font.BOLD, 16));
