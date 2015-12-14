@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Cadcliente extends JFrame {
 
@@ -45,7 +47,7 @@ public class Cadcliente extends JFrame {
 		});
 	}
 
-	public void limpaNome()
+	public void limpaCadastro()
 	{
 		nome.setText("");
 		cpf.setText("");
@@ -91,10 +93,20 @@ public class Cadcliente extends JFrame {
 		msg = msg + "\n Email: "+ Email;
 		msg = msg + "\n Telefone: "+ Telefone;
 		msg = msg + "\n Referência: "+ Referencia;
-		JOptionPane.showMessageDialog(null, msg);
+		String resposta = JOptionPane.showInputDialog(null,"Confirmação\n São estes os dados que serão cadastrados? " );
+		if(resposta.equals("sim")||resposta.equals("Sim")||resposta.equals("SIM"))
+		{
+			JOptionPane.showMessageDialog(null, msg);
+		}
+		else{
+			limpaCadastro();
 		
+		}
 		
 	}
+		
+		
+	
 	public Cadcliente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 635, 594);
@@ -158,71 +170,84 @@ public class Cadcliente extends JFrame {
 		lblRefrencia.setBounds(10, 453, 96, 14);
 		contentPane.add(lblRefrencia);
 		
+		JLabel lblStatus = new JLabel("Status:");
+		lblStatus.setFont(new Font("Arial", Font.BOLD, 18));
+		lblStatus.setBounds(382, 117, 67, 14);
+		contentPane.add(lblStatus);
+		
 		rg = new JTextField();
-		rg.setFont(new Font("Arial", Font.PLAIN, 12));
+		rg.setFont(new Font("Arial", Font.PLAIN, 16));
 		rg.setBounds(65, 162, 222, 29);
 		contentPane.add(rg);
 		rg.setColumns(10);
 		
 		cpf = new JTextField();
-		cpf.setFont(new Font("Arial", Font.PLAIN, 12));
+		cpf.setFont(new Font("Arial", Font.PLAIN, 16));
 		cpf.setColumns(10);
 		cpf.setBounds(106, 109, 248, 29);
 		contentPane.add(cpf);
 		
 		nome = new JTextField();
-		nome.setFont(new Font("Arial", Font.PLAIN, 12));
+		nome.setFont(new Font("Arial", Font.PLAIN, 16));
 		nome.setColumns(10);
 		nome.setBounds(65, 60, 515, 29);
 		contentPane.add(nome);
 		
 		cep = new JTextField();
-		cep.setFont(new Font("Arial", Font.PLAIN, 12));
+		cep.setFont(new Font("Arial", Font.PLAIN, 16));
 		cep.setColumns(10);
 		cep.setBounds(65, 215, 222, 29);
 		contentPane.add(cep);
 		
 		rua = new JTextField();
-		rua.setFont(new Font("Arial", Font.PLAIN, 12));
+		rua.setFont(new Font("Arial", Font.PLAIN, 16));
 		rua.setColumns(10);
 		rua.setBounds(65, 275, 307, 29);
 		contentPane.add(rua);
 		
 		bairro = new JTextField();
-		bairro.setFont(new Font("Arial", Font.PLAIN, 12));
+		bairro.setFont(new Font("Arial", Font.PLAIN, 16));
 		bairro.setColumns(10);
 		bairro.setBounds(374, 215, 230, 29);
 		contentPane.add(bairro);
 		
 		complemento = new JTextField();
-		complemento.setFont(new Font("Arial", Font.PLAIN, 12));
+		complemento.setFont(new Font("Arial", Font.PLAIN, 16));
 		complemento.setColumns(10);
 		complemento.setBounds(133, 330, 371, 29);
 		contentPane.add(complemento);
 		
 		numero = new JTextField();
-		numero.setFont(new Font("Arial", Font.PLAIN, 12));
+		numero.setFont(new Font("Arial", Font.PLAIN, 16));
 		numero.setColumns(10);
 		numero.setBounds(460, 274, 101, 29);
 		contentPane.add(numero);
 		
 		email = new JTextField();
-		email.setFont(new Font("Arial", Font.PLAIN, 12));
+		email.setFont(new Font("Arial", Font.PLAIN, 16));
 		email.setColumns(10);
 		email.setBounds(65, 387, 281, 29);
 		contentPane.add(email);
 		
 		telefone = new JTextField();
-		telefone.setFont(new Font("Arial", Font.PLAIN, 12));
+		telefone.setFont(new Font("Arial", Font.PLAIN, 16));
 		telefone.setColumns(10);
 		telefone.setBounds(429, 387, 188, 29);
 		contentPane.add(telefone);
 		
 		referencia = new JTextField();
-		referencia.setFont(new Font("Arial", Font.PLAIN, 12));
+		referencia.setFont(new Font("Arial", Font.PLAIN, 16));
 		referencia.setColumns(10);
 		referencia.setBounds(104, 447, 356, 29);
 		contentPane.add(referencia);
+		
+
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ativo", "Inativo"}));
+		comboBox.setFont(new Font("Arial", Font.PLAIN, 16));
+		comboBox.setToolTipText("");
+		comboBox.setBounds(448, 114, 98, 20);
+		contentPane.add(comboBox);
 		
 		JLabel lblCadastroDeClientes = new JLabel("Cadastro de Clientes");
 		lblCadastroDeClientes.setFont(new Font("Arial", Font.BOLD, 27));
@@ -234,7 +259,7 @@ public class Cadcliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				cadastraClienteteste();
 				mostraCadastro();
-				limpaNome();
+				limpaCadastro();
 				
 			}
 		});
@@ -245,13 +270,16 @@ public class Cadcliente extends JFrame {
 		JButton btnlimpar = new JButton("Limpar");
 		btnlimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				limpaNome();
+				limpaCadastro();
 				
 			}
 		});
 		btnlimpar.setFont(new Font("Arial", Font.BOLD, 16));
 		btnlimpar.setBounds(387, 512, 159, 23);
 		contentPane.add(btnlimpar);
+		
+		
+		
 		
 		
 		
