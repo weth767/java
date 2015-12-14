@@ -98,10 +98,16 @@ public class Cadcliente extends JFrame {
 		{
 			JOptionPane.showMessageDialog(null, msg);
 		}
-		else{
+		else if(resposta.equals("Não")|| resposta.equals("não")|| resposta.equals("NÃO") )
+		{
 			limpaCadastro();
-		
 		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Você não digitou uma palavra chave válida, por favor digite Sim ou Não ");
+			
+		}
+		
 		
 	}
 		

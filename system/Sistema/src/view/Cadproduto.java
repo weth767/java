@@ -45,27 +45,31 @@ public class Cadproduto extends JFrame {
 	}
 	public void mostraCadastro()
 	{
-		String msg = "Dados Cadastrados";
-		msg += "Nome Produto: "+ Nomeproduto;
-		msg += "Tipo Produto: "+ Tipoproduto;
-		msg += "Fornecedor: "+ Fornecedor;
-		msg += "Marca: "+ Marca;
-		msg += "Quantidade: "+ Quantidade;
-		msg += "Validade: "+ Validade;
-		msg += "Valor Compra: "+ Valorcompra;
-		msg += "Valor Venda: "+ Valorvenda;
+		String msg = "Dados Cadastrados:";
+		msg += "\nNome Produto: "+ Nomeproduto;
+		msg += "\nTipo Produto: "+ Tipoproduto;
+		msg += "\nFornecedor: "+ Fornecedor;
+		msg += "\nMarca: "+ Marca;
+		msg += "\nQuantidade: "+ Quantidade;
+		msg += "\nValidade: "+ Validade;
+		msg += "\nValor Compra: "+ Valorcompra;
+		msg += "\nValor Venda: "+ Valorvenda;
 		String resposta = JOptionPane.showInputDialog(null,"Confirmação\n São estes os dados que serão cadastrados? " );
 		if(resposta.equals("sim")||resposta.equals("Sim")||resposta.equals("SIM"))
 		{
 			JOptionPane.showMessageDialog(null, msg);
 		}
-		else{
+		else if(resposta.equals("Não")|| resposta.equals("não")|| resposta.equals("NÃO") )
+		{
 			limpaCadastro();
-		
 		}
 		
-				
-		
+		else{
+			
+			JOptionPane.showMessageDialog(null, "Você não digitou uma palavra chave válida, por favor digite Sim ou Não ");
+
+		}
+
 	}
 	public void cadastraProduto()
 	{
@@ -207,6 +211,8 @@ public class Cadproduto extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cadastraProduto();
+				mostraCadastro();
+				limpaCadastro();
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 16));
