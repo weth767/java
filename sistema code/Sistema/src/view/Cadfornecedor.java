@@ -81,8 +81,8 @@ public class Cadfornecedor extends JFrame {
 	}
 	public void mostraCadastro()
 	{
-		String msg = "Dados Cadastrados:";
-		msg += "\nNome: " + Nome;
+		
+		String msg =  "\nNome: " + Nome;
 		msg += "\nNome Fantasia: " + Nomefantasia;
 		msg += "\nCNPJ: " + Cnpj;
 		msg += "\nInscrição Estadual: " + Insc;
@@ -94,20 +94,14 @@ public class Cadfornecedor extends JFrame {
 		msg += "\nNúmero: " + Numero;
 		msg += "\nContato Web: " + Contato;
 		msg += "\nTelefone: " + Telefone;
-		String resposta = JOptionPane.showInputDialog(null,"Confirmação\n São estes os dados que serão cadastrados? " );
-		if(resposta.equals("sim")||resposta.equals("Sim")||resposta.equals("SIM"))
+		int resposta = JOptionPane.showConfirmDialog(null, "São esses os dados para serem cadastrados? "+ msg,"Confirmação",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if(resposta == JOptionPane.YES_OPTION)
 		{
-			JOptionPane.showMessageDialog(null, msg);
-		}
-		else if(resposta.equals("Não")|| resposta.equals("não")|| resposta.equals("NÃO") )
-		{
+			JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso ");
 			limpaCadastro();
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null, "Você não digitou uma palavra chave válida, por favor digite Sim ou Não ");
 			
-		}
+		}	
+		
 		
 	}
 	public Cadfornecedor() {
@@ -271,7 +265,7 @@ public class Cadfornecedor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				cadastraFornecedor();
 				mostraCadastro();
-				limpaCadastro();
+				
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.BOLD, 16));

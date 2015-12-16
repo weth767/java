@@ -16,6 +16,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
+import java.awt.Window.Type;
 
 public class Cadcliente extends JFrame {
 
@@ -81,8 +83,8 @@ public class Cadcliente extends JFrame {
 	}
 	public void mostraCadastro()
 	{
-		String msg = "Dados Cadastrados:";
-		msg = msg + "\n Nome: "+ Nome;
+		
+		String msg = "\n Nome: "+ Nome;
 		msg = msg + "\n CPF: "+ Cpf;
 		msg = msg + "\n RG: "+ Rg;
 		msg = msg + "\n CEP: "+ Cep;
@@ -93,20 +95,13 @@ public class Cadcliente extends JFrame {
 		msg = msg + "\n Email: "+ Email;
 		msg = msg + "\n Telefone: "+ Telefone;
 		msg = msg + "\n Referência: "+ Referencia;
-		String resposta = JOptionPane.showInputDialog(null,"Confirmação\n São estes os dados que serão cadastrados? " );
-		if(resposta.equals("sim")||resposta.equals("Sim")||resposta.equals("SIM"))
+		int resposta = JOptionPane.showConfirmDialog(null, "São esses os dados para serem cadastrados? "+ msg,"Confirmação",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+		if(resposta == JOptionPane.YES_OPTION)
 		{
-			JOptionPane.showMessageDialog(null, msg);
-		}
-		else if(resposta.equals("Não")|| resposta.equals("não")|| resposta.equals("NÃO") )
-		{
+			JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso ");
 			limpaCadastro();
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null, "Você não digitou uma palavra chave válida, por favor digite Sim ou Não ");
 			
-		}
+		}	
 		
 		
 	}
@@ -265,7 +260,7 @@ public class Cadcliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				cadastraClienteteste();
 				mostraCadastro();
-				limpaCadastro();
+			
 				
 			}
 		});
