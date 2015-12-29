@@ -10,7 +10,12 @@ import javax.swing.JSeparator;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
+import javax.swing.event.MenuKeyListener;
+import javax.swing.event.MenuKeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Telaprincipal {
 
@@ -39,9 +44,7 @@ public class Telaprincipal {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+	
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 951, 842);
@@ -54,9 +57,16 @@ public class Telaprincipal {
 		
 		JMenu mnCadastros = new JMenu("Cadastros");
 		menuBar.add(mnCadastros);
-		mnCadastros.setFont(new Font("Arial", Font.PLAIN, 48));
+		mnCadastros.setFont(new Font("Arial", Font.BOLD, 25));
 		
 		JMenuItem menuItemCadastroDeClientes = new JMenuItem("Cadastro de Clientes");
+		menuItemCadastroDeClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Cadcliente Cliente = new Cadcliente();
+				Cliente.show();
+			}
+		});
 		mnCadastros.add(menuItemCadastroDeClientes);
 		
 		JMenuItem mntmCadastroDeFornecedores = new JMenuItem("Cadastro de Fornecedores");
@@ -69,7 +79,7 @@ public class Telaprincipal {
 		mnCadastros.add(mntmCadastroDeTipos);
 		
 		JMenu mnMovimentaes = new JMenu("Movimenta\u00E7\u00F5es");
-		mnMovimentaes.setFont(new Font("Arial", Font.PLAIN, 48));
+		mnMovimentaes.setFont(new Font("Arial", Font.BOLD, 25));
 		menuBar.add(mnMovimentaes);
 		
 		JMenuItem mntmCompras = new JMenuItem("Compras");
@@ -79,11 +89,30 @@ public class Telaprincipal {
 		mnMovimentaes.add(mntmVendas);
 		
 		JMenu mnNewMenu = new JMenu("Relat\u00F3rios");
-		mnNewMenu.setFont(new Font("Arial", Font.PLAIN, 48));
+		mnNewMenu.setFont(new Font("Arial", Font.BOLD, 25));
 		menuBar.add(mnNewMenu);
 		
 		JMenu mnSair = new JMenu("Sair");
-		mnSair.setFont(new Font("Arial", Font.PLAIN, 48));
+		
+			
+			
+		mnSair.setFont(new Font("Arial", Font.BOLD, 25));
 		menuBar.add(mnSair);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Sair");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair? ","Confirmação",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
+				
+				if(resposta == JOptionPane.YES_OPTION)
+				{
+					System.exit(resposta);
+					
+				}
+				
+			}
+		});
+		mnSair.add(mntmNewMenuItem);
 	}
 }

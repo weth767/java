@@ -18,6 +18,10 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import java.awt.Window.Type;
+import javax.swing.JFormattedTextField;
+import javax.swing.JSeparator;
+import javax.swing.JInternalFrame;
+import javax.swing.JScrollBar;
 
 public class Cadcliente extends JFrame {
 
@@ -278,6 +282,38 @@ public class Cadcliente extends JFrame {
 		btnlimpar.setFont(new Font("Arial", Font.BOLD, 16));
 		btnlimpar.setBounds(387, 512, 159, 23);
 		contentPane.add(btnlimpar);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 102, 594, 2);
+		contentPane.add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 154, 599, 2);
+		contentPane.add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(10, 207, 599, 2);
+		contentPane.add(separator_2);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(10, 267, 599, 2);
+		contentPane.add(separator_3);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(10, 322, 599, 2);
+		contentPane.add(separator_4);
+		
+		JSeparator separator_5 = new JSeparator();
+		separator_5.setBounds(10, 379, 594, 2);
+		contentPane.add(separator_5);
+		
+		JSeparator separator_6 = new JSeparator();
+		separator_6.setBounds(10, 440, 599, 2);
+		contentPane.add(separator_6);
+		
+		JSeparator separator_7 = new JSeparator();
+		separator_7.setBounds(10, 500, 594, 2);
+		contentPane.add(separator_7);
 		
 		
 		
