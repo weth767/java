@@ -63,16 +63,29 @@ public class Telaprincipal {
 		menuItemCadastroDeClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Cadcliente Cliente = new Cadcliente();
-				Cliente.show();
+				Cadcliente cliente = new Cadcliente();
+				cliente.show();
 			}
 		});
 		mnCadastros.add(menuItemCadastroDeClientes);
 		
 		JMenuItem mntmCadastroDeFornecedores = new JMenuItem("Cadastro de Fornecedores");
+		mntmCadastroDeFornecedores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Cadfornecedor fornecedor = new Cadfornecedor();
+				fornecedor.show();
+			}
+		});
 		mnCadastros.add(mntmCadastroDeFornecedores);
 		
 		JMenuItem mntmCadastroDeProdutos = new JMenuItem("Cadastro de Produtos");
+		mntmCadastroDeProdutos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cadproduto produto = new Cadproduto();
+				produto.show();
+				
+			}
+		});
 		mnCadastros.add(mntmCadastroDeProdutos);
 		
 		JMenuItem mntmCadastroDeTipos = new JMenuItem("Cadastro de Tipos de Produtos");
