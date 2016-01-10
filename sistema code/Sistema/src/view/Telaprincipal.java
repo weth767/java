@@ -62,9 +62,9 @@ public class Telaprincipal {
 		JMenuItem menuItemCadastroDeClientes = new JMenuItem("Cadastro de Clientes");
 		menuItemCadastroDeClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				Cadcliente cliente = new Cadcliente();
-				cliente.show();
+		
+				Cliente cliente = new Cliente();
+				cliente.setVisible(true);
 			}
 		});
 		mnCadastros.add(menuItemCadastroDeClientes);
@@ -73,7 +73,7 @@ public class Telaprincipal {
 		mntmCadastroDeFornecedores.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Cadfornecedor fornecedor = new Cadfornecedor();
-				fornecedor.show();
+				fornecedor.setVisible(true);
 			}
 		});
 		mnCadastros.add(mntmCadastroDeFornecedores);
@@ -82,7 +82,7 @@ public class Telaprincipal {
 		mntmCadastroDeProdutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Cadproduto produto = new Cadproduto();
-				produto.show();
+				produto.setVisible(true);
 				
 			}
 		});
@@ -90,6 +90,17 @@ public class Telaprincipal {
 		
 		JMenuItem mntmCadastroDeTipos = new JMenuItem("Cadastro de Tipos de Produtos");
 		mnCadastros.add(mntmCadastroDeTipos);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Cadastro de Funcion\u00E1rios");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CadFuncionario funcionario = new CadFuncionario();
+				funcionario.setVisible(true);
+				
+				
+			}
+		});
+		mnCadastros.add(mntmNewMenuItem_1);
 		
 		JMenu mnMovimentaes = new JMenu("Movimenta\u00E7\u00F5es");
 		mnMovimentaes.setFont(new Font("Arial", Font.BOLD, 25));

@@ -16,6 +16,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JSeparator;
 
 public class Cadproduto extends JFrame {
 
@@ -221,5 +222,29 @@ public class Cadproduto extends JFrame {
 		btnLimpar.setFont(new Font("Arial", Font.BOLD, 16));
 		btnLimpar.setBounds(379, 386, 125, 23);
 		contentPane.add(btnLimpar);
+		
+		JSeparator separator = new JSeparator();
+		separator.setBounds(10, 86, 674, 14);
+		contentPane.add(separator);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 134, 674, 14);
+		contentPane.add(separator_1);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(10, 191, 674, 14);
+		contentPane.add(separator_2);
+		
+		JSeparator separator_3 = new JSeparator();
+		separator_3.setBounds(10, 244, 674, 14);
+		contentPane.add(separator_3);
+		
+		JSeparator separator_4 = new JSeparator();
+		separator_4.setBounds(10, 298, 674, 14);
+		contentPane.add(separator_4);
+		
+		JSeparator separator_5 = new JSeparator();
+		separator_5.setBounds(10, 359, 674, 14);
+		contentPane.add(separator_5);
 	}
 }
