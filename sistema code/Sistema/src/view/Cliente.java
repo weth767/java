@@ -118,7 +118,7 @@ public class Cliente extends JDialog {
 
 	
 	public Cliente() {
-		setBounds(100, 100, 759, 490);
+		setBounds(100, 100, 761, 544);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -213,7 +213,7 @@ public class Cliente extends JDialog {
 		contentPanel.add(label_8);
 		
 		numero = new JTextField();
-		numero.setFont(new Font("Arial", Font.PLAIN, 16));
+		numero.setFont(new Font("Arial", Font.ITALIC, 18));
 		numero.setColumns(10);
 		numero.setBounds(632, 174, 101, 29);
 		contentPanel.add(numero);
@@ -224,7 +224,7 @@ public class Cliente extends JDialog {
 		contentPanel.add(label_9);
 		
 		complemento = new JTextField();
-		complemento.setFont(new Font("Arial", Font.PLAIN, 16));
+		complemento.setFont(new Font("Arial", Font.ITALIC, 18));
 		complemento.setColumns(10);
 		complemento.setBounds(144, 216, 286, 29);
 		contentPanel.add(complemento);
@@ -240,7 +240,8 @@ public class Cliente extends JDialog {
 		contentPanel.add(lblTelefone);
 		
 		telefone = new JTextField();
-		telefone.setFont(new Font("Arial", Font.PLAIN, 16));
+		telefone.setToolTipText("");
+		telefone.setFont(new Font("Arial", Font.ITALIC, 18));
 		telefone.setColumns(10);
 		telefone.setBounds(523, 216, 210, 29);
 		contentPanel.add(telefone);
@@ -281,7 +282,7 @@ public class Cliente extends JDialog {
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
-		btnNewButton.setBounds(138, 418, 160, 23);
+		btnNewButton.setBounds(144, 450, 160, 23);
 		contentPanel.add(btnNewButton);
 		
 		JButton btnLimpar = new JButton("Limpar");
@@ -291,7 +292,7 @@ public class Cliente extends JDialog {
 			}
 		});
 		btnLimpar.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
-		btnLimpar.setBounds(421, 418, 160, 23);
+		btnLimpar.setBounds(421, 450, 160, 23);
 		contentPanel.add(btnLimpar);
 		
 		JLabel lblCidade = new JLabel("Cidade:\r\n");

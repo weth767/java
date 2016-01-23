@@ -94,9 +94,7 @@ public class Telaprincipal {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Cadastro de Funcion\u00E1rios");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				CadFuncionario funcionario = new CadFuncionario();
-				funcionario.setVisible(true);
-				
+			
 				
 			}
 		});
