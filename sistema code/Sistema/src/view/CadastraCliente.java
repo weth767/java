@@ -19,8 +19,10 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
-public class Cliente extends JDialog {
+public class CadastraCliente extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField nome;
@@ -35,25 +37,25 @@ public class Cliente extends JDialog {
 	private JTextField referencia;
 	private JTextField email;
 	private JTextField trabalho;
-	private JTextField cidade;
-	private JTextField estado;
-	String Nome,Rg,Cpf,Cep,Rua,Bairro,Complemento,Numero,Email,Telefone,Referencia,Cidade,Estado,Trabalho;
+	String Nome,Rg,Cpf,Cep,Rua,Bairro,Complemento,Numero,Email,Telefone,Referencia,Cidade1,Estado1,Trabalho;
+	Object Cidade,Estado;
+	private JComboBox comboCidade;
+	private JComboBox comboEstado;
+	Telaprincipal t = new Telaprincipal();
 	
-	public static void main(String[] args) {
-		try {
-			Cliente dialog = new Cliente();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
+		
+	
+	public void limitaLetras(KeyEvent e)
+	{
+		char codigoTecla = e.getKeyChar();
+		if(!(codigoTecla >= 'a' && codigoTecla <='z' || codigoTecla >= 'A' && codigoTecla <= 'Z' || codigoTecla == 'ç' || codigoTecla == 'ã' || codigoTecla == 'é' || codigoTecla == ' ' || codigoTecla == 'ô' || codigoTecla == 'â'))
+			e.consume();
+		
 	}
-	
-	
 	
 	public void cadastraCliente()
 	{	
-			
 			Nome = nome.getText();
 			Cpf = cpf.getText();
 			Rg = rg.getText();
@@ -66,8 +68,9 @@ public class Cliente extends JDialog {
 			Telefone = telefone.getText();
 			Referencia = referencia.getText();
 			Trabalho = trabalho.getText();
-			Cidade = cidade.getText();
-			Estado = estado.getText();
+			Cidade = comboCidade.getSelectedItem();
+			Estado = comboEstado.getSelectedItem();
+			
 			
 	}
 	public void mostraCadastro()
@@ -85,48 +88,33 @@ public class Cliente extends JDialog {
 		msg = msg + "\n Telefone: "+ Telefone;
 		msg = msg + "\n Referência: "+ Referencia;
 		msg = msg + "\n Local de Trabalho: "+ Trabalho;
-		msg = msg + "\n Cidade: "+ Cidade;
-		msg = msg + "\n Estado: "+ Estado;
+		msg = msg + "\n Cidade: "+ Cidade.toString();
+		msg = msg + "\n Estado: "+ Estado.toString();
 		int resposta = JOptionPane.showConfirmDialog(null, "São esses os dados para serem cadastrados? "+ msg,"Confirmação",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE);
 		if(resposta == JOptionPane.YES_OPTION)
 		{
 			JOptionPane.showMessageDialog(null, "Dados cadastrados com sucesso ");
-			limpaCadastro();
+			t.limparTodosCampos(contentPanel);
 			
 		}	
 		
 		
 	}
-	public void limpaCadastro()
-	{
-		nome.setText("");
-		cpf.setText("");
-		rg.setText("");
-		cep.setText("");
-		rua.setText("");
-		bairro.setText("");
-		complemento.setText("");
-		numero.setText("");
-		email.setText("");
-		telefone.setText("");
-		referencia.setText("");
-		trabalho.setText("");
-		cidade.setText("");
-		estado.setText("");
-	}
+	
 	
 
 	
-	public Cliente() {
+	public CadastraCliente() {
 		setBounds(100, 100, 761, 544);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(220, 220, 220));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JLabel label = new JLabel("Cadastro de Clientes");
 		label.setFont(new Font("Arial", Font.BOLD, 27));
-		label.setBounds(201, 11, 286, 32);
+		label.setBounds(252, 11, 370, 55);
 		contentPanel.add(label);
 		
 		JLabel label_1 = new JLabel("Nome:");
@@ -135,6 +123,12 @@ public class Cliente extends JDialog {
 		contentPanel.add(label_1);
 		
 		nome = new JTextField();
+		nome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				limitaLetras(arg0);
+			}
+		});
 		nome.setFont(new Font("Arial", Font.ITALIC, 18));
 		nome.setColumns(10);
 		nome.setBounds(75, 54, 658, 29);
@@ -146,6 +140,16 @@ public class Cliente extends JDialog {
 		contentPanel.add(label_2);
 		
 		cpf = new JTextField();
+		cpf.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char codigoTecla = e.getKeyChar();
+				if(!(codigoTecla >= '0' && codigoTecla<= '9'))
+					e.consume();
+				if(cpf.getText().length() == 11)
+					e.consume();
+			}
+		});
 		cpf.setFont(new Font("Arial", Font.ITALIC, 18));
 		cpf.setColumns(10);
 		cpf.setBounds(112, 94, 281, 29);
@@ -153,14 +157,14 @@ public class Cliente extends JDialog {
 		
 		JLabel label_3 = new JLabel("Status:");
 		label_3.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
-		label_3.setBounds(514, 29, 67, 14);
+		label_3.setBounds(10, 23, 74, 14);
 		contentPanel.add(label_3);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Ativo", "Inativo"}));
 		comboBox.setToolTipText("");
 		comboBox.setFont(new Font("Arial", Font.ITALIC, 18));
-		comboBox.setBounds(585, 23, 125, 23);
+		comboBox.setBounds(91, 18, 125, 23);
 		contentPanel.add(comboBox);
 		
 		JLabel label_4 = new JLabel("RG:");
@@ -169,6 +173,13 @@ public class Cliente extends JDialog {
 		contentPanel.add(label_4);
 		
 		rg = new JTextField();
+		rg.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(rg.getText().length() == 9)
+					e.consume();
+			}	
+		});
 		rg.setFont(new Font("Arial", Font.ITALIC, 18));
 		rg.setColumns(10);
 		rg.setBounds(440, 94, 293, 29);
@@ -180,6 +191,14 @@ public class Cliente extends JDialog {
 		contentPanel.add(label_5);
 		
 		cep = new JTextField();
+		cep.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char codigo = e.getKeyChar();
+				if(cep.getText().length() == 8)
+					e.consume();
+			}
+		});
 		cep.setFont(new Font("Arial", Font.ITALIC, 18));
 		cep.setColumns(10);
 		cep.setBounds(62, 136, 264, 29);
@@ -231,7 +250,7 @@ public class Cliente extends JDialog {
 		
 		JLabel label_10 = new JLabel("E-mail:");
 		label_10.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
-		label_10.setBounds(10, 308, 67, 14);
+		label_10.setBounds(10, 308, 74, 14);
 		contentPanel.add(label_10);
 		
 		JLabel lblTelefone = new JLabel("Telefone:\r\n");
@@ -240,6 +259,13 @@ public class Cliente extends JDialog {
 		contentPanel.add(lblTelefone);
 		
 		telefone = new JTextField();
+		telefone.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(telefone.getText().length() == 9)
+					e.consume();
+			}
+		});
 		telefone.setToolTipText("");
 		telefone.setFont(new Font("Arial", Font.ITALIC, 18));
 		telefone.setColumns(10);
@@ -248,7 +274,7 @@ public class Cliente extends JDialog {
 		
 		JLabel label_11 = new JLabel("Ref\u00EArencia:");
 		label_11.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
-		label_11.setBounds(10, 268, 107, 14);
+		label_11.setBounds(10, 268, 116, 14);
 		contentPanel.add(label_11);
 		
 		referencia = new JTextField();
@@ -265,7 +291,7 @@ public class Cliente extends JDialog {
 		
 		JLabel lblLocalDeTrabalho = new JLabel("Local de Trabalho:");
 		lblLocalDeTrabalho.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
-		lblLocalDeTrabalho.setBounds(10, 352, 160, 14);
+		lblLocalDeTrabalho.setBounds(10, 352, 170, 14);
 		contentPanel.add(lblLocalDeTrabalho);
 		
 		trabalho = new JTextField();
@@ -279,6 +305,7 @@ public class Cliente extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				cadastraCliente();
 				mostraCadastro();
+				
 			}
 		});
 		btnNewButton.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
@@ -288,7 +315,7 @@ public class Cliente extends JDialog {
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				limpaCadastro();
+				t.limparTodosCampos(contentPanel);
 			}
 		});
 		btnLimpar.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
@@ -300,21 +327,21 @@ public class Cliente extends JDialog {
 		lblCidade.setBounds(10, 393, 74, 14);
 		contentPanel.add(lblCidade);
 		
-		cidade = new JTextField();
-		cidade.setFont(new Font("Arial", Font.ITALIC, 18));
-		cidade.setColumns(10);
-		cidade.setBounds(94, 378, 309, 29);
-		contentPanel.add(cidade);
-		
 		JLabel lblEstado = new JLabel("Estado:\r\n");
 		lblEstado.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
 		lblEstado.setBounds(413, 393, 74, 14);
 		contentPanel.add(lblEstado);
 		
-		estado = new JTextField();
-		estado.setFont(new Font("Arial", Font.ITALIC, 18));
-		estado.setColumns(10);
-		estado.setBounds(493, 381, 240, 29);
-		contentPanel.add(estado);
+		comboCidade = new JComboBox();
+		comboCidade.setFont(new Font("Arial", Font.PLAIN, 16));
+		comboCidade.setModel(new DefaultComboBoxModel(new String[] {"Umuarama","Londrina","Maringá","Serra dos Dourados","Cafezal do Sul","Paranavaí","Cidade Gaúcha","Toledo"}));
+		comboCidade.setBounds(83, 392, 275, 20);
+		contentPanel.add(comboCidade);
+		
+		comboEstado = new JComboBox();
+		comboEstado.setModel(new DefaultComboBoxModel(new String[] {"Paran\u00E1"}));
+		comboEstado.setFont(new Font("Arial", Font.PLAIN, 16));
+		comboEstado.setBounds(486, 392, 210, 20);
+		contentPanel.add(comboEstado);
 	}
 }
