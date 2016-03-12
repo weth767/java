@@ -152,7 +152,7 @@ public class Telaprincipal {
 		JMenu menuFuncionario = new JMenu("");
 		menuBarFuncionario.add(menuFuncionario);
 		menuFuncionario.setToolTipText("Funcionários");
-		menuFuncionario.setIcon(new ImageIcon("C:\\Users\\Weth\\Desktop\\icones\\Funcionario.png"));
+		menuFuncionario.setIcon(new ImageIcon("F:\\Projeto Java\\icones\\Icones Usados\\iconefuncionario.png"));
 		
 		JMenuItem mntmIncluir = new JMenuItem("Incluir");
 		mntmIncluir.addActionListener(new ActionListener() {
